@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="PlaneTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2019-06-18T14:45:42" hostname="MAKERSs-MacBook-Pro-10.local" time="0.005">
+  <properties/>
+  <testcase name="stopFlying_isFlying_becomesFalse" classname="PlaneTest" time="0.001"/>
+  <testcase name="startFlying_isFlying_becomesTrue" classname="PlaneTest" time="0.0"/>
+  <testcase name="isFlying_returnsFalseByDefault" classname="PlaneTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
