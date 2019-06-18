@@ -16,7 +16,11 @@ public class Airport {
     }
 
     public void takeOff(Plane plane) {
-        planes.remove(plane);
+        if(planes.indexOf(plane) > -1) {
+            planes.remove(plane);
+            plane.startFlying();
+        }
+
     }
 
     public List planes() {

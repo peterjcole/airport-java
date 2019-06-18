@@ -15,11 +15,16 @@ public class AirportTest {
     @Mock
     Plane planeMock;
 
+    @Mock
+    Plane secondPlaneMock;
+
     @Before
     public void initialize() {
         MockitoAnnotations.initMocks(this);
         airport = new Airport();
         when(planeMock.isFlying()).thenReturn(true);
+        when(secondPlaneMock.isFlying()).thenReturn(true);
+
     }
 
     @Test
@@ -34,6 +39,28 @@ public class AirportTest {
         when(planeMock.isFlying()).thenReturn(false);
         airport.takeOff(planeMock);
         assertEquals(-1, airport.planes().indexOf(planeMock));
+    }
+
+    @Test
+    public void takeoff_keepsOtherPlanesIfPlaneIsNotInAirport() throws AirportFullException {
+        airport.land(secondPlaneMock);
+        airport.takeOff(planeMock);
+        assertEquals(1, airport.planes().size());
+    }
+
+    @Test
+    public void takeoff_callsStartFlyingOnPlane() throws AirportFullException {
+        airport.land(planeMock);
+        airport.takeOff(planeMock);
+        verify(planeMock).startFlying();
+
+    }
+
+    @Test
+    public void takeoff_doesNotCallStartFlyingIfPlaneIsNotInAirport() throws AirportFullException {
+        airport.land(planeMock);
+        airport.takeOff(secondPlaneMock);
+        verify(secondPlaneMock, never()).startFlying();
     }
 
     @Test

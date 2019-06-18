@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="AirportTest" tests="6" skipped="0" failures="0" errors="0" timestamp="2019-06-18T15:50:01" hostname="MAKERSs-MacBook-Pro-10.local" time="0.494">
+<testsuite name="AirportTest" tests="9" skipped="0" failures="0" errors="0" timestamp="2019-06-18T16:01:10" hostname="MAKERSs-MacBook-Pro-10.local" time="0.548">
   <properties/>
-  <testcase name="takeoff_removesPlaneFromPlanes" classname="AirportTest" time="0.458"/>
+  <testcase name="takeoff_callsStartFlyingOnPlane" classname="AirportTest" time="0.521"/>
+  <testcase name="takeoff_keepsOtherPlanesIfPlaneIsNotInAirport" classname="AirportTest" time="0.003"/>
+  <testcase name="takeoff_removesPlaneFromPlanes" classname="AirportTest" time="0.002"/>
   <testcase name="land_addsPlaneToPlanes" classname="AirportTest" time="0.002"/>
   <testcase name="land_planeDoesNotLandIfAlreadyLanded" classname="AirportTest" time="0.002"/>
-  <testcase name="land_callsIsFlyingOnPlane" classname="AirportTest" time="0.016"/>
-  <testcase name="land_callsStopFlyingOnPlane" classname="AirportTest" time="0.006"/>
-  <testcase name="land_exceptionWhenAirportIsFull" classname="AirportTest" time="0.007"/>
+  <testcase name="land_callsIsFlyingOnPlane" classname="AirportTest" time="0.005"/>
+  <testcase name="land_callsStopFlyingOnPlane" classname="AirportTest" time="0.003"/>
+  <testcase name="land_exceptionWhenAirportIsFull" classname="AirportTest" time="0.004"/>
+  <testcase name="takeoff_doesNotCallStartFlyingIfPlaneIsNotInAirport" classname="AirportTest" time="0.003"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
