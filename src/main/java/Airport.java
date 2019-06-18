@@ -2,9 +2,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Airport {
+
+    public static final int CAPACITY = 10;
+
     private List<Plane> planes = new ArrayList<Plane>();
 
-    public void land(Plane plane) {
+    public void land(Plane plane) throws AirportFullException {
+        if(planes.size() >= CAPACITY) throw new AirportFullException();
         if(plane.isFlying()) {
             planes.add(plane);
             plane.stopFlying();

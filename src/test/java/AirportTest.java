@@ -23,13 +23,13 @@ public class AirportTest {
     }
 
     @Test
-    public void land_addsPlaneToPlanes() {
+    public void land_addsPlaneToPlanes() throws AirportFullException {
         airport.land(planeMock);
         assertEquals(0, airport.planes().indexOf(planeMock));
     }
 
     @Test
-    public void takeoff_removesPlaneFromPlanes() {
+    public void takeoff_removesPlaneFromPlanes() throws AirportFullException {
         airport.land(planeMock);
         when(planeMock.isFlying()).thenReturn(false);
         airport.takeOff(planeMock);
@@ -37,7 +37,7 @@ public class AirportTest {
     }
 
     @Test
-    public void land_planeDoesNotLandIfAlreadyLanded() {
+    public void land_planeDoesNotLandIfAlreadyLanded() throws AirportFullException {
         airport.land(planeMock);
         when(planeMock.isFlying()).thenReturn(false);
         airport.land(planeMock);
@@ -45,14 +45,21 @@ public class AirportTest {
     }
 
     @Test
-    public void land_callsIsFlyingOnPlane() {
+    public void land_callsIsFlyingOnPlane() throws AirportFullException {
         airport.land(planeMock);
         verify(planeMock).isFlying();
     }
 
     @Test
-    public void land_callsStopFlyingOnPlane() {
+    public void land_callsStopFlyingOnPlane() throws AirportFullException {
         airport.land(planeMock);
         verify(planeMock).stopFlying();
+    }
+
+    @Test(expected = AirportFullException.class)
+    public void land_exceptionWhenAirportIsFull() throws AirportFullException {
+        for (int i = 0; i <= Airport.CAPACITY; i++) {
+            airport.land(planeMock);
+        }
     }
 }
